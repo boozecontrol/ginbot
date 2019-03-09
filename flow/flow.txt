@@ -1,8 +1,8 @@
-Interface:
+Interface components:
 	LCD (2x 16 chars)
 	Big Button ("Confirm")
 	Knob (20 increments)
-	Weight sensor
+	Weight sensor (1kg)
 	Reset button ("Turn off everything, return to start")
 
 Machine ON - "Reset" state
