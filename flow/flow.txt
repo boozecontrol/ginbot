@@ -1,0 +1,86 @@
+Interface:
+	LCD (2x 16 chars)
+	Big Button ("Confirm")
+	Knob (20 increments)
+	Weight sensor
+	Reset button ("Turn off everything, return to start")
+
+Machine ON - "Reset" state
+
+	Knob INACTIVE
+	BigButton INPUT
+	Weight sensor INACTIVE
+
+	LCD "Ginbot ON", "Hit the big button to start"
+
+Hit the big button - "Confirm empty tray" state
+
+	Knob INACTIVE
+	BigButton INPUT
+	Weight sensor INACTIVE
+
+	LCD "Tray is empty?", "Hit the big button to confirm"
+
+Hit the big button - "Menu title" state
+	
+	BigButton INACTIVE
+	Knob INPUT
+	Weight sensor INACTIVE
+
+	LCD "Menu", "Select a cocktail"
+
+Turn the knob - "Choose from menu" state
+
+	BigButton INPUT
+	Knob INPUT
+	Weight sensor INACTIVE
+
+	LCD "Cocktail name", "Hit button to confirm"
+
+Hit the big button - "confirm cocktail" state
+
+	BigButton INPUT
+	Knob INPUT (Any selection will return to previous state)
+	Weight sensor INACTIVE
+
+	LCD "[Cocktail name]", "Confirm?"
+
+Hit big button to confirm - "Waiting for glass" state
+
+	BigButton INPUT
+	Knob INPUT (Any selection will return to previous state)
+	Weight sensor INPUT
+
+	LCD "Insert glass", "Waiting..."
+
+Insert a glass - "Balancing" state
+	
+	BigButton INACTIVE
+	Knob INACTIVE
+	Weight sensor INPUT
+
+	LCD "Weighing glass", "Weighing..."
+
+Glass weighed - "Confirm weight" state
+	
+	BigButton INPUT
+	Knob INACTIVE
+	Weight sensor INACTIVE
+
+	LCD "Glass OK", "Hit button to start!"
+
+Hit button - "Dispensing cocktail" state
+	
+	BigButton INACTIVE
+	Knob INACTIVE
+	Weight sensor INPUT
+
+	LCD "[Current ingredient]", "[Progress bar]"
+
+Wait - "Cocktail ready" state
+
+	BigButton INPUT
+	Knob INACTIVE
+	Weight sensor INACTIVE
+
+	LCD "Cocktail ready!", "Enjoy your drink!"
