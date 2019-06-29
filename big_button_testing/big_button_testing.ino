@@ -27,11 +27,12 @@ int MULTIPLEX_PINS[] = {MULTIPLEXER_S0, MULTIPLEXER_S1, MULTIPLEXER_S2, MULTIPLE
 //  16      | D0      | M_S3
 
 
-boolean lookForHigh = false;
+boolean isOn = false;
 
 void setup() {
-  pinMode(MULTIPLEXER_SIGNAL, INPUT);
+  pinMode(MULTIPLEXER_SIGNAL, OUTPUT);
 
+//  digitalWrite(MULTIPLEXER_SIGNAL, HIGH);
 
   pinMode(MULTIPLEXER_S0, OUTPUT);
   pinMode(MULTIPLEXER_S1, OUTPUT);
@@ -39,24 +40,18 @@ void setup() {
   pinMode(MULTIPLEXER_S3, OUTPUT);
 
   Serial.begin(9600);
+
+  setMultiplex(15);
 }
 
 void loop() {
 
-int buttonState = digitalRead(MULTIPLEXER_SIGNAL);
+  delay(500);
 
-setMultiplex(15);
-
-if(buttonState == LOW && !lookForHigh){
-  Serial.println("pushed");
-  lookForHigh=true;
-}
-
-if(buttonState = HIGH && lookForHigh){
-  Serial.println("pushed");
-  lookForHigh=false;
-}
-
+  Serial.println(analogRead(MULTIPLEXER_SIGNAL)); //analog read works, digital doesnt for some reason
+  
+  
+  Serial.println("loop");
 }
 
 void setMultiplex(int activeChannel){
@@ -70,7 +65,7 @@ void setMultiplex(int activeChannel){
     }
   }
 
-//  Serial.println("Channel "+String(activeChannel)+" active");
+  Serial.println("Channel "+String(activeChannel)+" active");
 
  
 }
