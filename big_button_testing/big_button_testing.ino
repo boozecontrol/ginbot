@@ -48,8 +48,11 @@ void loop() {
 
   delay(500);
 
-  Serial.println(analogRead(MULTIPLEXER_SIGNAL)); //analog read works, digital doesnt for some reason
-  
+  boolean input = digitalRead(MULTIPLEXER_SIGNAL); //analog read works, digital doesnt for some reason
+
+  if(input){
+    Serial.println("pressed");
+  }
   
   Serial.println("loop");
 }
