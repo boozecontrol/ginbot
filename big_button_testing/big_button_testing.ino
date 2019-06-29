@@ -46,7 +46,7 @@ void setup() {
 
 void loop() {
 
-  delay(500);
+//  delay(500);
 
   boolean input = digitalRead(MULTIPLEXER_SIGNAL); //analog read works, digital doesnt for some reason
 

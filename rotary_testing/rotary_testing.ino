@@ -1,35 +1,74 @@
+#define inputA 6
+#define inputB 7
 
-#include <LiquidCrystal.h>
+#define button 12
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+int prevCounter = 0;
+int counter = 0;
+int aState;
+int aLastState;
 
-const int contrastPin = 6;
-const int rotaryPin = A5;
+boolean buttonState = false;
 
-void setup() {
-  pinMode(contrastPin, OUTPUT);
-  analogWrite(contrastPin, 90);
+void setup(){
+
+pinMode(inputA, INPUT);
+pinMode(inputB, INPUT);
+pinMode(button, INPUT);
+
+Serial.begin(9600);
+
+aLastState = digitalRead(inputA);
   
-  lcd.begin(16, 2);
-  lcd.print("Rotary Pin");
-
-  pinMode(rotaryPin, INPUT);
 }
 
-void loop() {
-//  double contrastSwitch = (double)analogRead(contrastReadPin);
 
-  int rotaryPosition = analogRead(rotaryPin);
-//  int brightnessFactor = (int) (contrastSwitch / 1000 * 255);  
- 
-  
-  // set the cursor to column 0, line 1
-  // (note: line 1 is the second row, since counting begins with 0):
-  lcd.setCursor(0, 1);
-  lcd.print((String)rotaryPosition+"    ");
-  
-//  lcd.print((String)brightnessFactor+"     ");
-//  analogWrite(contrastPin, brightnessFactor);
-  //Print a message to second line of LCD
-  
+void loop(){
+
+  aState = digitalRead(inputA);
+
+
+  if(aState != aLastState){
+    if(digitalRead(inputB) != aState) {
+      counter++;
+      
+    }else{
+      counter--;
+    }
+
+Serial.println(counter);
+
+    if(counter > prevCounter){
+      Serial.println("Next");
+      
+    }
+    if(counter < prevCounter){
+      Serial.println("Previous");
+    }
+
+    prevCounter= counter;
+
+//    Serial.print("Position:");
+//    Serial.println(counter);
+    delay(200);
+  }
+
+  boolean buttonPress = !digitalRead(button);
+
+  if(buttonPress){
+    
+    if(!buttonState){
+      buttonState = true;
+      Serial.println("button pressed");
+    }
+    
+  }else{
+
+    if(buttonState){
+      buttonState = false;
+    }
+    
+  }
+
+  aState = aLastState;
 }
