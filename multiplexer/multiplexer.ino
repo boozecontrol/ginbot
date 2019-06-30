@@ -32,8 +32,6 @@ boolean isOn = false;
 void setup() {
   pinMode(MULTIPLEXER_SIGNAL, OUTPUT);
 
-//  digitalWrite(MULTIPLEXER_SIGNAL, HIGH);
-
   pinMode(MULTIPLEXER_S0, OUTPUT);
   pinMode(MULTIPLEXER_S1, OUTPUT);
   pinMode(MULTIPLEXER_S2, OUTPUT);
