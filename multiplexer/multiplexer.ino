@@ -45,23 +45,6 @@ void setup() {
 void loop() {
 
 digitalWrite(MULTIPLEXER_SIGNAL, LOW);
-//  if(isOn){
-//    digitalWrite(MULTIPLEXER_SIGNAL, LOW);
-//    isOn=false;
-//  }else{
-//    digitalWrite(MULTIPLEXER_SIGNAL, HIGH);
-//    isOn=true;
-//  }
-
-//  delay(1000);
-//
-//
-//  setMultiplex(1);
-//
-//  delay(1000);
-//
-//  setMultiplex(0);
-
 
   for(int i=0; i<8; i++){
     delay(1000);
